@@ -17,8 +17,8 @@ profilerLogger = setup_logger("profilerLogger", 'profiler.log', True)
 
 def zero_state(module, batch_size):
     # * 2 is for the two directions
-    return Variable(maybe_cuda(torch.zeros(module.num_layers * 2, batch_size, module.hidden))), \
-           Variable(maybe_cuda(torch.zeros(module.num_layers * 2, batch_size, module.hidden)))
+    return Variable(maybe_cuda(torch.zeros(module.num_layers * 2, batch_size, module.hidden)))
+           # Variable(maybe_cuda(torch.zeros(module.num_layers * 2, batch_size, module.hidden)))
 
 
 class SentenceEncodingRNN(nn.Module):
@@ -28,7 +28,7 @@ class SentenceEncodingRNN(nn.Module):
         self.hidden = hidden
         self.input_size = input_size
 
-        self.lstm = nn.LSTM(input_size=self.input_size,
+        self.lstm = nn.GRU(input_size=self.input_size,
                             hidden_size=self.hidden,
                             num_layers=self.num_layers,
                             dropout=0,
@@ -53,7 +53,7 @@ class Model(nn.Module):
 
         self.sentence_encoder = sentence_encoder
 
-        self.sentence_lstm = nn.LSTM(input_size=sentence_encoder.hidden * 2,
+        self.sentence_lstm = nn.GRU(input_size=sentence_encoder.hidden * 2,
                                      hidden_size=hidden,
                                      num_layers=num_layers,
                                      batch_first=True,
