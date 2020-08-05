@@ -140,6 +140,6 @@ class Model(nn.Module):
 
 def create():
     sentence_encoder = SentenceEncodingRNN(input_size=300,
-                                           hidden=256,
+                                           hidden=64,
                                            num_layers=2)
-    return Model(sentence_encoder, hidden=256, num_layers=2)
+    return Model(sentence_encoder, hidden=64, num_layers=2)
