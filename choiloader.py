@@ -95,7 +95,9 @@ def read_choi_file(path, word2vec, train, return_w2v_tensors = True,manifesto=Fa
 class ChoiDataset(Dataset):
     def __init__(self, root, word2vec, train=False, folder=False,manifesto=False, folders_paths = None):
         self.manifesto = manifesto
-        if folders_paths is not None:
+        if (manifesto):
+            self.textfiles = list(Path(root).glob('*'))
+        elif folders_paths is not None:
             self.textfiles = []
             for f in folders_paths:
                 self.textfiles.extend(list(f.glob('*.ref')))

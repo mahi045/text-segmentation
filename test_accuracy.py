@@ -66,6 +66,13 @@ def main(args):
             dataset_folders = []
             dataset_folders.append(args.wiki_folder)
         print 'running on wikipedia'
+    elif args.manifesto:
+        if (args.bySegLength):
+            dataset_folders = getSegmentsFolders(utils.config['manifestodataset'])
+            print 'run on manifesto by segments length'
+        else :
+            dataset_folders = [utils.config['manifestodataset']]
+            print 'running on manifesto'
     else:
         if (args.bySegLength):
             dataset_folders = getSegmentsFolders(utils.config['choidataset'])
@@ -94,6 +101,8 @@ def main(args):
                 dataset = WikipediaDataSet(dataset_path, word2vec, folder=True, high_granularity=False)
             else :
                 dataset = WikipediaDataSet(dataset_path, word2vec, high_granularity=False)
+        elif args.manifesto:
+            dataset = ChoiDataset(dataset_path , word2vec, manifesto= True)
         else:
             dataset = ChoiDataset(dataset_path , word2vec)
 
@@ -168,6 +177,7 @@ if __name__ == '__main__':
     parser.add_argument('--stop_after', help='Number of batches to stop after', default=None, type=int)
     parser.add_argument('--config', help='Path to config.json', default='config.json')
     parser.add_argument('--wiki', help='Use wikipedia as dataset?', action='store_true')
+    parser.add_argument('--manifesto', help='Use manifesto as dataset?', action='store_true')
     parser.add_argument('--bySegLength', help='calc pk on choi by segments length?', action='store_true')
     parser.add_argument('--wiki_folder', help='path to folder which contains wiki documents')
     parser.add_argument('--naive', help='use naive model', action='store_true')

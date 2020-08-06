@@ -213,6 +213,12 @@ def main(args):
             test_dataset = WikipediaDataSet(dataset_path / 'test', word2vec=word2vec,
                                             high_granularity=args.high_granularity)
 
+        elif args.manifesto:
+            dataset_path = utils.config['manifestodataset']
+            train_dataset = ChoiDataset(dataset_path, word2vec, manifesto=True)
+            dev_dataset = ChoiDataset(dataset_path, word2vec, manifesto=True)
+            test_dataset = ChoiDataset(dataset_path, word2vec, manifesto=True)
+        
         else:
             dataset_path = utils.config['choidataset']
             train_dataset = ChoiDataset(dataset_path, word2vec)
@@ -278,6 +284,7 @@ if __name__ == '__main__':
     parser.add_argument('--stop_after', help='Number of batches to stop after', default=None, type=int)
     parser.add_argument('--config', help='Path to config.json', default='config.json')
     parser.add_argument('--wiki', help='Use wikipedia as dataset?', action='store_true')
+    parser.add_argument('--manifesto', help='Use manifesto as dataset?', action='store_true')
     parser.add_argument('--num_workers', help='How many workers to use for data loading', type=int, default=0)
     parser.add_argument('--high_granularity', help='Use high granularity for wikipedia dataset segmentation', action='store_true')
     parser.add_argument('--infer', help='inference_dir', type=str)
