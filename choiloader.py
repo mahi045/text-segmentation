@@ -54,7 +54,7 @@ def clean_paragraph(paragraph):
     return cleaned_paragraph
 
 def read_choi_file(path, word2vec, train, return_w2v_tensors = True,manifesto=False):
-    seperator = '========' if manifesto else '=========='
+    seperator = '==========' if manifesto else '=========='
     with Path(path).open('r') as f:
         raw_text = f.read()
     paragraphs = [clean_paragraph(p) for p in raw_text.strip().split(seperator)
