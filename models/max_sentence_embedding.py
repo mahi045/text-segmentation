@@ -11,6 +11,8 @@ import numpy as np
 from times_profiler import profiler
 
 
+INPUT_SIZE = 768
+
 logger = setup_logger(__name__, 'train.log')
 profilerLogger = setup_logger("profilerLogger", 'profiler.log', True)
 
@@ -139,7 +141,7 @@ class Model(nn.Module):
 
 
 def create():
-    sentence_encoder = SentenceEncodingRNN(input_size=300,
+    sentence_encoder = SentenceEncodingRNN(input_size=INPUT_SIZE,
                                            hidden=64,
                                            num_layers=2)
     return Model(sentence_encoder, hidden=64, num_layers=2)

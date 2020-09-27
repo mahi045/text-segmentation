@@ -14,6 +14,7 @@ from times_profiler import profiler
 logger = setup_logger(__name__, 'train.log')
 profilerLogger = setup_logger("profilerLogger", 'profiler.log', True)
 
+INPUT_SIZE = 768
 
 def zero_state(module, batch_size):
     # * 2 is for the two directions
@@ -144,7 +145,7 @@ class Model(nn.Module):
 
 
 def create():
-    sentence_encoder = SentenceEncodingRNN(input_size=300,
+    sentence_encoder = SentenceEncodingRNN(input_size=INPUT_SIZE,
                                            hidden=256,
                                            num_layers=2)
     return Model(sentence_encoder, hidden=256, num_layers=2)
