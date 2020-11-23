@@ -13,6 +13,11 @@ CUSTOM_BERT_CONFIG_DICT = {
         "config_file": os.path.join(os.path.dirname(os.path.abspath(__file__)), "bert_model_dir/bert_base/bert_config.json"),
         "index_file": os.path.join(os.path.dirname(os.path.abspath(__file__)), "bert_model_dir/bert_base/bert_model.ckpt.index")
     },
+    "bert_tiny": {
+        "output_hidden_states": True,
+        "config_file": os.path.join(os.path.dirname(os.path.abspath(__file__)), "bert_model_dir/bert_tiny/bert_config.json"),
+        "index_file": os.path.join(os.path.dirname(os.path.abspath(__file__)), "bert_model_dir/bert_tiny/bert_model.ckpt.index")
+    },
 }
 
 class FeatureExtractorBert(BertForPreTraining):
