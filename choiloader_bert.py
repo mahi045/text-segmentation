@@ -56,7 +56,7 @@ def clean_paragraph(paragraph):
     cleaned_paragraph= paragraph.replace("'' ", " ").replace(" 's", "'s").replace("``", "").strip('\n')
     return cleaned_paragraph
 
-def read_choi_file(path, feature_extractor = None, train, return_w2v_tensors = True,manifesto=False):
+def read_choi_file(path, feature_extractor, train, return_w2v_tensors = True,manifesto=False):
     seperator = '==========' if manifesto else '=========='
     with Path(path).open('r') as f:
         raw_text = f.read()
@@ -84,16 +84,15 @@ def read_choi_file(path, feature_extractor = None, train, return_w2v_tensors = T
                     continue
                 sentences_count +=1
                 if return_w2v_tensors:
-                    if model is None:
-                        feature = feature_extractor(sentence)
-                        new_text.append(feature)
+                    feature = feature_extractor(sentence)
+                    new_text.append([feature])
                 else:
                     new_text.append(words)
 
             lastparagraphsentenceidx += sentences_count
             targets.append(lastparagraphsentenceidx - 1)
 
-    print(np.array(new_text).shape, len(targets))
+    #print(np.array(new_text).shape, len(targets))
     return new_text, targets, path
 
 
@@ -103,7 +102,6 @@ class ChoiDataset(Dataset):
         self.manifesto = manifesto
         if (manifesto):
             self.textfiles = list(Path(root).glob('*'))
-            print(self.textfiles)
         elif folders_paths is not None:
             self.textfiles = []
             for f in folders_paths:
@@ -119,13 +117,11 @@ class ChoiDataset(Dataset):
         self.root = root
 
 		# need to declare tokenizer also
-        self.feature_extractor = pipeline('feature-extraction', model = bert_model, 
-tokenizer = BertTokenizer.from_pretrained("bert-base-uncased"))
+        self.feature_extractor = pipeline('feature-extraction', model = bert_model, tokenizer = BertTokenizer.from_pretrained("bert-base-uncased"))
         
     def __getitem__(self, index):
         path = self.textfiles[index]
-
-        return read_choi_file(path, self.feature_extractor, self.model, self.train,manifesto=self.manifesto)
+        return read_choi_file(path, self.feature_extractor, self.train,manifesto=self.manifesto)
 
     def __len__(self):
         return len(self.textfiles)

@@ -53,7 +53,7 @@ def get_scections_from_text(txt, high_granularity=True):
         sentences = [s for s in txt.strip().split("\n") if len(s) > 0 and s != "\n"]
         txt = '\n'.join(sentences).strip('\n')
 
-
+    sections_to_keep_pattern = sections_to_keep_pattern[0:1]
     all_sections = re.split(sections_to_keep_pattern, txt)
     non_empty_sections = [s for s in all_sections if len(s) > 0]
 
@@ -65,14 +65,15 @@ def get_sections(path, high_granularity=True):
     raw_content = file.read()
     file.close()
 
-    clean_txt = raw_content.decode('utf-8').strip()
+    raw_content.strip()
+    clean_txt = raw_content
 
     sections = [clean_section(s) for s in get_scections_from_text(clean_txt, high_granularity)]
 
     return sections
 
 
-def read_wiki_file(path, feature_extractor = None, model = None, tokenizer=None, remove_preface_segment=True, ignore_list=False, remove_special_tokens=False,
+def read_wiki_file(path, feature_extractor, remove_preface_segment=True, ignore_list=False, remove_special_tokens=False,
                    return_as_sentences=False, high_granularity=True,only_letters = False):
     data = []
     targets = []
@@ -88,16 +89,16 @@ def read_wiki_file(path, feature_extractor = None, model = None, tokenizer=None,
                 if ignore_list and is_list_sentence:
                     continue
                     if not return_as_sentences:
-                        data.append(feature_extractor(sentence)[0])
+                        data.append([feature_extractor(sentence)])
                     else:
                         #raise ValueError('Sentence in wikipedia file is empty')
                         logger.info('Sentence in wikipedia file is empty')
                 else:  # for the annotation. keep sentence as is.
                     if (only_letters):
                         sentence = re.sub('[^a-zA-Z0-9 ]+', '', sentence)
-                        data.append(sentence)
+                        data.append([feature_extractor(sentence)])
                     else:
-                        data.append(sentence)
+                        data.append([feature_extractor(sentence)])
             if data:
                 targets.append(len(data) - 1)
 
