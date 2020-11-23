@@ -1,0 +1,39 @@
+========
+4 hcl  o2  2 cl2  2 h2o
+========
+this reaction is accomplished with the use of cucl2 as a  catalyst  and is performed at high temperarature about 400c the amount of extracted chlorine is approximately 80 due to the extremely corrosive reaction mixture industrial use of this method is difficult and several pilot trials failed in the past nevertheless recent developments are promising
+========
+another earlier process to produce chlorine was to heat brine with acid and  manganese dioxide
+========
+2 nacl  2h2so4  mno2  na2so4  mnso4  2 h2o  cl2
+========
+using this process chemist  carl wilhelm scheele  was the first to isolate chlorine in a laboratory the manganese can be recovered by the  weldon process
+========
+small amounts of chlorine gas can be made in the laboratory by putting concentrated  hydrochloric acid  in a flask with a side arm and rubber tubing attached  manganese dioxide  is then added and the flask stoppered the reaction is not greatly exothermic as chlorine is denser than air it can be easily collected by placing the tube inside a flask where it will displace the air once full the collecting flask can be stoppered
+========
+in the laboratory small amounts of chlorine gas can also be created by adding concentrated  hydrochloric acid  typically about 5m to  sodium hypochlorite  or  sodium chlorate  solution
+========
+largescale production of chlorine involves several steps and many pieces of equipment  the description below is typical of a membrane plant  the plant also produces simultaneously  sodium hydroxide  referred to in the industry as caustic soda and  hydrogen  gas  a typical plant consists of brine productiontreatment cell operations chlorine cooling  drying chlorine compression  liquefaction liquid chlorine storage  loading caustic handling evaporation storage  loading and  hydrogen  handling
+========
+key to the production of chlorine is the operation of the  brine  saturationtreatment system  maintaining a properly saturated solution with the correct purity is vital especially for membrane cells  many plants have a salt pile which is sprayed with recycled brine  others have slurry tanks that are fed raw salt
+========
+the raw brine is partially or totally treated with  sodium hydroxide   sodium carbonate  and a flocculant to reduce  calcium   magnesium  and other impurities  the brine proceeds to a large  clarifier  or a filter where the impurities are removed  the total brine is additionally filtered before entering ion exchangers to further remove impurities  at several points in this process the brine is tested for hardness and strength
+========
+after the ion exchangers the brine is considered pure and is transferred to storage tanks to be pumped into the cell room  brine fed to the cell line is heated to the correct temperature to control exit brine temperatures according to the electrical load  brine exiting the cell room must be treated to remove residual chlorine and control  ph  before being returned to the saturation stage  this can be accomplished via dechlorination towers with acid and sodium bisulfite addition  failure to remove chlorine can result in damage to the cells  brine should be monitored for accumulation of chlorate and sulfate and either have treatment systems in place or purging of the brine loop to maintain safe levels since chlorate can diffuse through the membranes and contaminate the caustic while sulfate can damage the anode surface coating
+========
+the building that houses the many electrolytic cells is usually called a cell room or cell house although some plants are built outdoors this building contains support structures for the cells connections for supplying electrical power to the cells and piping for the fluids monitoring and control of the temperatures of the feed caustic and brine is done to control exit temperatures  also monitored are the voltages of each cell which vary with the electrical load on the cell room that is used to control the rate of production  monitoring and control of the pressures in the chlorine and hydrogen headers is also done via pressure control valves
+========
+direct  electrical current  is supplied via  rectifiers   plant load is controlled by varying the current to the cells as the current is increased flow rates for brine caustic and deionized water are increased while lowering the feed temperatures
+========
+chlorine gas exiting the cell line must be cooled and dried since the exit gas can be over 80º c and contains moisture that allows chlorine gas to be corrosive to iron piping  cooling the gas allows for a large amount of  moisture from the brine to condense out of the gas stream  cooling also improves the efficiency of the compression and liquefaction stage that follows chlorine exiting is ideally between 18º c and 25º c  after cooling the gas stream passes through a series of towers with counter flowing  sulfuric acid   these towers progressively remove any remaining moisture from the chlorine gas  after exiting the drying towers the chlorine is filtered to remove any sulfuric acid droplets
+========
+several methods of compression may be used  liquid ring   reciprocating  or  centrifugal   the chlorine gas is compressed at this stage and may be further cooled by inter and aftercoolers  after compression it flows to the liquefiers where it is cooled enough to liquefy  non condensible gases and remaining chlorine gas are vented off as part of the pressure control of the liquefaction systems  these gases are routed to a  gas scrubber  producing  sodium hypochlorite  or used in the production of  hydrochloric acid  by combustion with hydrogen or  ethylene dichloride  by reaction with ethylene
+========
+liquid chlorine is typically gravityfed to storage tanks it can be loaded into rail or road tankers via pumps or padded with compressed dry gas
+========
+caustic fed to the cell room flows in a loop that is simultaneously bled off to storage with a part diluted with deionized water and returned to the cell line for strengthening within the cells  the caustic exiting the cell line must be monitored for strength to maintain safe concentrations  too strong or too weak a solution may damage the membranes  membrane cells typically produce caustic in the range of 30 to 33 by weight  the feed caustic flow is heated at low electrical loads to control its exit temperature  higher loads require the caustic to be cooled to maintain correct exit temperatures the caustic exiting to storage is pulled from a storage tank and may be diluted for sale to customers who require weak caustic or for use on site  another stream may be pumped into a  multiple effect evaporator  set to produce commercial 50 caustic  rail cars and tanker trucks are loaded at loading stations via pumps
+========
+hydrogen produced may be vented unprocessed directly to the atmosphere or cooled compressed and dried for use in other processes on site or sold to a customer via pipeline cylinders or trucks  some possible uses are hydrochloric acid or hydrogen peroxide production desulfurization of petroleum oils and use as a fuel in boilers or fuel cells
+========
+production of chlorine is extremely energy intensive energy consumption per unit weight of product is not far below that for iron and steel manufacture and greater than for the production of glass or cement
+========
