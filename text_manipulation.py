@@ -68,12 +68,12 @@ def split_long_sentences_with_backslash_n(max_words_in_sentence,sentences, doc_i
         sentence_words = extract_sentence_words(sentence)
         if len(sentence_words) > max_words_in_sentence:
             splitted_sentences = sentence.split('\n')
-            if len(splitted_sentences) > 1:
-                logger.info("Sentence with backslash was splitted. Doc Id: " + str(doc_id) +"   Sentence:  " + sentence)
+            # if len(splitted_sentences) > 1:
+            #    logger.info("Sentence with backslash was splitted. Doc Id: " + str(doc_id) +"   Sentence:  " + sentence)
             new_sentences.extend(splitted_sentences )
         else:
-            if "\n" in sentence:
-                logger.info("No split for sentence with backslash n. Doc Id: " + str(doc_id) +"   Sentence:  " + sentence)
+            # if "\n" in sentence:
+            #    logger.info("No split for sentence with backslash n. Doc Id: " + str(doc_id) +"   Sentence:  " + sentence)
             new_sentences.append(sentence)
     return new_sentences
 

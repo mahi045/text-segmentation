@@ -203,21 +203,38 @@ def main(args):
 
     configure(os.path.join('runs', args.expname))
 
-    if not args.test:
-        word2vec = gensim.models.KeyedVectors.load_word2vec_format(utils.config['word2vecfile'], binary=True)
-    else:
-        word2vec = None
+    #if not args.test:
+    #    word2vec = gensim.models.KeyedVectors.load_word2vec_format(utils.config['word2vecfile'], binary=True)
+    #else:
+    word2vec = None
 
+    print("loading embedding model {0}".format(args.bert_embedding))
     bert_model = FeatureExtractorBert.model_builder(args.bert_embedding)
 
     if not args.infer:
         if args.wiki:
-            dataset_path = Path(utils.config['wikidataset'])
-            train_dataset = WikipediaDataSet(dataset_path / 'train', 
-                                             high_granularity=args.high_granularity, bert_model=bert_model)
-            dev_dataset = WikipediaDataSet(dataset_path / 'dev', high_granularity=args.high_granularity, bert_model=bert_model)
-            test_dataset = WikipediaDataSet(dataset_path / 'test', 
-                                            high_granularity=args.high_granularity, bert_model=bert_model)
+            assert not (args.wikicity and args.wikielement) 
+            if args.wikicity:
+                dataset_path = Path(utils.config['wikicitydataset'])
+                train_dataset = WikipediaDataSet(dataset_path / 'train', 
+                                             high_granularity=args.high_granularity, bert_model=bert_model, folder=True)
+                dev_dataset = WikipediaDataSet(dataset_path / 'dev', high_granularity=args.high_granularity, bert_model=bert_model, folder=True)
+                test_dataset = WikipediaDataSet(dataset_path / 'test', 
+                                            high_granularity=args.high_granularity, bert_model=bert_model, folder=True)
+            elif args.wikielement:
+                dataset_path = Path(utils.config['wikielementdataset'])
+                train_dataset = WikipediaDataSet(dataset_path / 'train', 
+                                             high_granularity=args.high_granularity, bert_model=bert_model, folder=True)
+                dev_dataset = WikipediaDataSet(dataset_path / 'dev', high_granularity=args.high_granularity, bert_model=bert_model, folder=True)
+                test_dataset = WikipediaDataSet(dataset_path / 'test', 
+                                            high_granularity=args.high_granularity, bert_model=bert_model, folder=True)
+            else:
+                dataset_path = Path(utils.config['wikidataset'])
+                train_dataset = WikipediaDataSet(dataset_path / 'train', 
+                                                 high_granularity=args.high_granularity, bert_model=bert_model, folder=True)
+                dev_dataset = WikipediaDataSet(dataset_path / 'dev', high_granularity=args.high_granularity, bert_model=bert_model, folder=True)
+                test_dataset = WikipediaDataSet(dataset_path / 'test', 
+                                                high_granularity=args.high_granularity, bert_model=bert_model, folder=True)
         elif args.manifesto:
             dataset_path = utils.config['manifestodataset']
             train_dataset = ChoiDataset(dataset_path, manifesto=True, bert_model=bert_model)
@@ -290,10 +307,12 @@ if __name__ == '__main__':
     parser.add_argument('--config', help='Path to config.json', default='config.json')
     parser.add_argument('--wiki', help='Use wikipedia as dataset?', action='store_true')
     parser.add_argument('--manifesto', help='Use manifesto as dataset?', action='store_true')
+    parser.add_argument('--wikicity', help='Use wikipedia as dataset?', action='store_true')
+    parser.add_argument('--wikielement', help='Use manifesto as dataset?', action='store_true')
     parser.add_argument('--num_workers', help='How many workers to use for data loading', type=int, default=0)
     parser.add_argument('--high_granularity', help='Use high granularity for wikipedia dataset segmentation', action='store_true')
     parser.add_argument('--infer', help='inference_dir', type=str)
-    parser.add_argument('--bert_embedding', help='bert embedding type. It will be used to select appropriate bert model from directory. Deafult one has embedding size of 768', type=str, default="bert_base")
-    parser.add_argument('--embedding_size', help='bert embedding size. Deafult one has embedding size of 768', type=int, default=768)
+    parser.add_argument('--bert_embedding', help='bert embedding type. It will be used to select appropriate bert model from directory. Deafult one has embedding size of 128', type=str, default="bert_tiny")
+    parser.add_argument('--embedding_size', help='bert embedding size. Deafult one has embedding size of 128', type=int, default=128)
 
     main(parser.parse_args())
